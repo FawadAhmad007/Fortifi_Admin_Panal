@@ -1,0 +1,105 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 240 17% 8%;
+    --foreground: 0 0% 98%;
+    --card: 240 17% 12%;
+    --card-foreground: 0 0% 98%;
+    --popover: 240 17% 12%;
+    --popover-foreground: 0 0% 98%;
+    --primary: 272 100% 45%;
+    --primary-foreground: 0 0% 100%;
+    --secondary: 240 17% 15%;
+    --secondary-foreground: 0 0% 98%;
+    --muted: 240 17% 18%;
+    --muted-foreground: 240 5% 65%;
+    --accent: 272 100% 45%;
+    --accent-foreground: 0 0% 98%;
+    --destructive: 350 100% 62%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 240 17% 18%;
+    --input: 240 17% 18%;
+    --ring: 272 100% 45%;
+    --radius: 0.5rem;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+}
+
+.crypto-card {
+  @apply relative overflow-hidden bg-gradient-to-br from-secondary-500 to-secondary-700 border-0 shadow-lg;
+}
+
+.crypto-card::before {
+  content: "";
+  @apply absolute inset-0 bg-crypto-pattern bg-no-repeat bg-right-top opacity-5;
+}
+
+.crypto-card-primary {
+  @apply relative overflow-hidden bg-gradient-to-br from-primary-600 to-primary-800 border-0 shadow-lg;
+}
+
+.crypto-card-primary::before {
+  content: "";
+  @apply absolute inset-0 bg-crypto-pattern bg-no-repeat bg-right-top opacity-5;
+}
+
+.crypto-card-success {
+  @apply relative overflow-hidden bg-gradient-to-br from-success to-success/70 border-0 shadow-lg;
+}
+
+.crypto-card-success::before {
+  content: "";
+  @apply absolute inset-0 bg-crypto-pattern bg-no-repeat bg-right-top opacity-5;
+}
+
+.crypto-card-warning {
+  @apply relative overflow-hidden bg-gradient-to-br from-warning to-warning/70 border-0 shadow-lg;
+}
+
+.crypto-card-warning::before {
+  content: "";
+  @apply absolute inset-0 bg-crypto-pattern bg-no-repeat bg-right-top opacity-5;
+}
+
+.crypto-card-destructive {
+  @apply relative overflow-hidden bg-gradient-to-br from-destructive to-destructive/70 border-0 shadow-lg;
+}
+
+.crypto-card-destructive::before {
+  content: "";
+  @apply absolute inset-0 bg-crypto-pattern bg-no-repeat bg-right-top opacity-5;
+}
+
+.glass-effect {
+  @apply bg-white/5 backdrop-blur-sm border border-white/10;
+}
+
+.sidebar-item {
+  @apply flex items-center gap-3 rounded-md px-3 py-2 text-sm transition-colors hover:text-primary-300;
+}
+
+.sidebar-item.active {
+  @apply bg-primary-900/50 text-primary-300 border-l-2 border-primary;
+}
+
+.gradient-text {
+  @apply bg-clip-text text-transparent bg-gradient-to-r from-primary-300 to-primary-500;
+}
+
+.chart-container {
+  width: 100%;
+  height: 100%;
+  min-height: 300px;
+}
+
