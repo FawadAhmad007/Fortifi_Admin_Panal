@@ -113,7 +113,6 @@ export default function JoinBetaPage() {
                 <TableHead>Phone Number</TableHead>
                 <TableHead>Subject</TableHead>
                 <TableHead>Date</TableHead>
-                <TableHead className="text-right">Actions</TableHead>
               </TableRow>
             </TableHeader>
             <TableBody>
