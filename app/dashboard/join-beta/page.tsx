@@ -32,7 +32,7 @@ export default function JoinBetaPage() {
     setError(null)
 
     try {
-        const response = await axios.get("https://api.fortifi.world/api/contacts", {
+        const response = await axios.get("http://localhost:8000/api/contacts", {
             params: {
               page: currentPage,
               limit: itemsPerPage,
@@ -138,14 +138,6 @@ export default function JoinBetaPage() {
                     <TableCell>{contact.phoneNumber || "N/A"}</TableCell>
                     <TableCell>{contact.subject || "N/A"}</TableCell>
                     <TableCell>{formatDate(contact.createdAt)}</TableCell>
-                    <TableCell className="text-right">
-                      <Link href={`/dashboard/join-beta/${contact._id}`}>
-                        <Button size="icon" variant="ghost">
-                          <Eye className="h-4 w-4" />
-                          <span className="sr-only">View</span>
-                        </Button>
-                      </Link>
-                    </TableCell>
                   </TableRow>
                 ))
               ) : (
