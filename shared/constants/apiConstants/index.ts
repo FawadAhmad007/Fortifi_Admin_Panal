@@ -6,7 +6,7 @@ const COINGECKO = 'https://pro-api.coingecko.com/api/v3';
 
 const END_POINT = {
     LOGIN: '/api/admin/Login', 
-    GET_CONTACTS:'/api/contacts',
+    GET_CONTACTS:'/contacts',
     UPDATE_KYC:'/api/kyc/update/{id}',
     GET_KYC:'/api/kyc',
     GET_SINGLE_KYC:'/api/kyc/{id}',

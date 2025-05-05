@@ -22,37 +22,36 @@ export default function LoginPage() {
   const { toast } = useToast()
 
   const handleLogin = async (e: React.FormEvent) => {
-    e.preventDefault()
-    setIsLoading(true)
-
+    e.preventDefault();
+    setIsLoading(true);
+  
     try {
-      const response = await login({ email, password })
-console.log("Login response:", response)
-      if (response?.data?.is_successfull ) {
-        localStorage.setItem("admin-logged-in", "true")
-        dispatch(loginSuccess({ token: response?.data?.token }));
-
+      // Temporary hardcoded login check
+      if (email === "mesafintgold@gmail.com" && password === "admin1234") {
+        localStorage.setItem("admin-logged-in", "true");
+        dispatch(loginSuccess({ token: "hardcoded-token" }));
+  
         toast({
           variant: "success",
           title: "Login successful",
           description: "Welcome to the Fortifi Admin Panel",
-        })
-
-        router.push("/dashboard")
-
+        });
+  
+        router.push("/dashboard");
       } else {
-        throw new Error("Invalid credentials")
+        throw new Error("Invalid credentials");
       }
     } catch (error: any) {
       toast({
         variant: "destructive",
         title: "Login failed",
         description: error?.message || "Invalid email or password",
-      })
+      });
     } finally {
-      setIsLoading(false)
+      setIsLoading(false);
     }
-  }
+  };
+  
 
   return (
     <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-secondary-900 to-secondary-950 p-4">
