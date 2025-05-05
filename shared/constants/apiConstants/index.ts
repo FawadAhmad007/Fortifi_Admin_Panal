@@ -1,16 +1,18 @@
-const BASE_URL = 'https://api.fortifi.world';
+const BASE_URL =  'http://localhost:8000';
 const COINGECKO_PUBLIC = 'https://api.coingecko.com/api/v3';
 const COINGECKO = 'https://pro-api.coingecko.com/api/v3';
 
 const END_POINT = {
-    SIGNUP: '/api/auth/sign_up',
-    SIGNIN: '/api/auth/sign_in',
-    LOGIN: '/api/auth/sent/otp', //resend otp also
-    VERIFY_EMAIL: '/api/email/verify/',
-    RESEND:'/api/email/resend',
-    UPDATE_PASSWORD:'/api/user/update/password',
-    SUBMIT_KYC:'/api/user/kyc',
+    LOGIN: '/api/admin/Login', 
+    GET_CONTACTS:'/api/contacts',
+    UPDATE_KYC:'/api/kyc/update/{id}',
+    GET_KYC:'/api/kyc',
+    GET_SINGLE_KYC:'/api/kyc/{id}',
     GET_NEWS:'/api/news',
+    GET_NEWS_BY_ID:'/api/news/{id}',
+    CREATE_NEWS:'/api/news/create',
+    UPDATE_NEWS:'/api/news/update/{id}',
+    DELETE_NEWS:'/api/news/{id}'
 };
 
 export {

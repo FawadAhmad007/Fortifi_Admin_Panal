@@ -38,12 +38,12 @@ export default function NewsPage() {
             <h1 className="text-3xl font-bold tracking-tight">News Management</h1>
             <p className="text-muted-foreground">Create and manage news articles</p>
           </div>
-          <Link href="/dashboard/news/create" passHref>
-            <Button className="bg-primary hover:bg-primary/90">
+            <Button className="bg-primary hover:bg-primary/90"
+            
+            onClick={() => router.push("/dashboard/news/create")}>
               <Plus className="mr-2 h-4 w-4" />
               Create News
             </Button>
-          </Link>
         </div>
 
         <Card className="crypto-card">

@@ -19,7 +19,7 @@ export const post = (data: any, url: string): AxiosConfig => ({
   data,
   timeout: 10000,
   headers: {
-    'x-api-key': process.env.API_SECRET_KEY || '',
+    'x-api-key': process.env.NEXT_PUBLIC_API_SECRET_KEY || '',
     'Content-Type': 'application/json',
   },
 });
@@ -30,10 +30,11 @@ export const postConfig = (data: any, url: string): AxiosConfig => {
     url,
     timeout: 10000,
     headers: {
-      'x-api-key': process.env.API_SECRET_KEY || '',
       'Content-Type': 'application/json',
+      'x-api-key': process.env.NEXT_PUBLIC_API_SECRET_KEY || '',
     },
   };
+  console.log('postConfig', config);
   if (data != null) config.data = data;
   return config;
 };
@@ -44,7 +45,7 @@ export const putConfig = (data: any, url: string): AxiosConfig => {
     url,
     timeout: 10000,
     headers: {
-      'x-api-key': process.env.API_SECRET_KEY || '',
+      'x-api-key': process.env.NEXT_PUBLIC_API_SECRET_KEY || '',
       'Content-Type': 'application/json',
     },
   };
@@ -52,13 +53,14 @@ export const putConfig = (data: any, url: string): AxiosConfig => {
   return config;
 };
 
-export const getConfig = (_data: any, url: string): AxiosConfig => ({
+export const getConfig = ( url: string): AxiosConfig => ({
   method: 'GET',
   url,
   timeout: 10000,
   headers: {
-    'x-api-key': process.env.API_SECRET_KEY || '',
+    'x-api-key': process.env.NEXT_PUBLIC_API_SECRET_KEY || '',
     'Content-Type': 'application/json',
+
   },
 });
 
@@ -67,11 +69,13 @@ export const protectedGetConfig = (url: string, token: string): AxiosConfig => (
   url,
   timeout: 10000,
   headers: {
-    'x-api-key': process.env.API_SECRET_KEY || '',
+    'x-api-key': process.env.NEXT_PUBLIC_API_SECRET_KEY || '',
     'Content-Type': 'application/json',
     Authorization: `Bearer ${token}`,
   },
-});
+}
+
+);
 
 export const protectedPostConfig = (data: any, url: string, token: string): AxiosConfig => {
   const config: AxiosConfig = {
@@ -79,7 +83,7 @@ export const protectedPostConfig = (data: any, url: string, token: string): Axio
     url,
     timeout: 10000,
     headers: {
-      'x-api-key': process.env.API_SECRET_KEY || '',
+      'x-api-key': process.env.NEXT_PUBLIC_API_SECRET_KEY || '',
       'Content-Type': 'application/json',
       Authorization: `Bearer ${token}`,
     },
@@ -94,7 +98,7 @@ export const protectedPutConfig = (data: any, url: string, token: string): Axios
     url,
     timeout: 10000,
     headers: {
-      'x-api-key': process.env.API_SECRET_KEY || '',
+      'x-api-key': process.env.NEXT_PUBLIC_API_SECRET_KEY || '',
       'Content-Type': 'application/json',
       Authorization: `Bearer ${token}`,
     },
@@ -109,7 +113,7 @@ export const protectedPatchConfig = (data: any, url: string, token: string): Axi
     url,
     timeout: 10000,
     headers: {
-      'x-api-key': process.env.API_SECRET_KEY || '',
+      'x-api-key': process.env.NEXT_PUBLIC_API_SECRET_KEY || '',
       'Content-Type': 'application/json',
       Authorization: `Bearer ${token}`,
     },
@@ -123,7 +127,7 @@ export const protectedDeleteConfig = (url: string, token: string): AxiosConfig =
   url,
   timeout: 10000,
   headers: {
-    'x-api-key': process.env.API_SECRET_KEY || '',
+    'x-api-key': process.env.NEXT_PUBLIC_API_SECRET_KEY || '',
     'Content-Type': 'application/json',
     Authorization: `Bearer ${token}`,
   },

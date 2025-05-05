@@ -16,14 +16,6 @@ import {
   import * as CONSTANTS from '../constants/';
   
   // import { getToken } from '@token';
-  
-  export const userSignUp = async (data:any) => {
-    const config = postConfig(
-      data,
-      CONSTANTS.BASE_URL + CONSTANTS.END_POINT.SIGNUP,
-    );
-    return await publicResponseHandler(config);
-  };
   export const login = async (data:any) => {
     const config = postConfig(
       data,
@@ -31,36 +23,23 @@ import {
     );
     return await publicResponseHandler(config);
   };
-  export const userSignIn = async (data:any) => {
-    const config = postConfig(
-      data,
-      CONSTANTS.BASE_URL + CONSTANTS.END_POINT.SIGNIN,
-    );
-    return await publicResponseHandler(config);
-  };
-  
-  export const resendOtp = async (data:any) => {
-    const config = postConfig(
-      data,
-      CONSTANTS.BASE_URL + CONSTANTS.END_POINT.LOGIN,
-    );
-    return await publicResponseHandler(config);
-  };
-  export const emailVerification = async (token:string) => {
-    const config = putConfig(
-      null,
-      `${CONSTANTS.BASE_URL + CONSTANTS.END_POINT.VERIFY_EMAIL}:${token}`,
+  export const getContacts = async (token:any,page:number) => {
+    const config = getConfig(
+      `${CONSTANTS.BASE_URL + CONSTANTS.END_POINT.GET_CONTACTS}?page=${page}&limit=10`,
     );
     return await publicResponseHandler(config);
   };
 
-  export const resendEmailVerification = async () => {
-    const config = postConfig(
-      null,
-      CONSTANTS.BASE_URL + CONSTANTS.END_POINT.RESEND,
+ 
+  export const createNews = async (data:any,token:any) => {
+    const config = protectedPostConfig(
+      data,
+      CONSTANTS.BASE_URL + CONSTANTS.END_POINT.CREATE_NEWS,
+      token
     );
     return await publicResponseHandler(config);
   };
+
 //   export const upload = async (photo:any) => {
 //     const data = new FormData();
   

@@ -59,6 +59,8 @@
     "react-resizable-panels": "^2.1.7",
     "react-spinners": "^0.17.0",
     "recharts": "2.15.0",
+    "redux-logger": "^3.0.6",
+    "redux-persist": "^6.0.0",
     "sonner": "^1.7.1",
     "sweetalert2": "^11.19.1",
     "tailwind-merge": "^2.5.5",

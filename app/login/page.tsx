@@ -10,40 +10,47 @@ import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle }
 import { useRouter } from "next/navigation"
 import { useToast } from "@/hooks/use-toast"
 import { Globe } from "lucide-react"
-
+import { login } from "@/shared/services/request"
+import { useDispatch, useSelector } from "react-redux";
+import { loginSuccess, logout } from "@/redux/reducers";
 export default function LoginPage() {
-  const [username, setUsername] = useState("")
+  const [email, setEmail] = useState("")
   const [password, setPassword] = useState("")
-  const [isLoading, setIsLoading] = useState(false)
+  const [isLoading, setIsLoading] = useState(false)  
+  const dispatch = useDispatch();
   const router = useRouter()
   const { toast } = useToast()
 
-  const handleLogin = (e: React.FormEvent) => {
+  const handleLogin = async (e: React.FormEvent) => {
     e.preventDefault()
     setIsLoading(true)
 
-    // Hardcoded credentials
-    if (username === "admin" && password === "admin123") {
-      // Set login status in localStorage
-      localStorage.setItem("admin-logged-in", "true")
+    try {
+      const response = await login({ email, password })
+console.log("Login response:", response)
+      if (response?.data?.is_successfull ) {
+        localStorage.setItem("admin-logged-in", "true")
+        dispatch(loginSuccess({ token: response?.data?.token }));
 
-      toast({
-        variant: "success",
-        title: "Login successful",
-        description: "Welcome to the Fortifi Admin Panel",
-      })
+        toast({
+          variant: "success",
+          title: "Login successful",
+          description: "Welcome to the Fortifi Admin Panel",
+        })
 
-      // Redirect to dashboard
-      setTimeout(() => {
         router.push("/dashboard")
-      }, 1000)
-    } else {
-      setIsLoading(false)
+
+      } else {
+        throw new Error("Invalid credentials")
+      }
+    } catch (error: any) {
       toast({
         variant: "destructive",
         title: "Login failed",
-        description: "Invalid username or password",
+        description: error?.message || "Invalid email or password",
       })
+    } finally {
+      setIsLoading(false)
     }
   }
 
@@ -60,15 +67,15 @@ export default function LoginPage() {
         <CardContent>
           <form onSubmit={handleLogin} className="space-y-4">
             <div className="space-y-2">
-              <Label htmlFor="username" className="text-white">
-                Username
+              <Label htmlFor="email" className="text-white">
+                Email
               </Label>
               <Input
-                id="username"
-                type="text"
-                placeholder="admin"
-                value={username}
-                onChange={(e) => setUsername(e.target.value)}
+                id="email"
+                type="email"
+                placeholder="admin@example.com"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
                 required
                 className="bg-secondary-700 border-white/10"
               />
@@ -98,10 +105,9 @@ export default function LoginPage() {
           </form>
         </CardContent>
         <CardFooter className="border-t border-white/10 flex flex-col space-y-2 pt-4">
-          <p className="text-sm text-gray-400 text-center">Demo credentials: admin / admin123</p>
+          <p className="text-sm text-gray-400 text-center">Use a valid email and password to sign in.</p>
         </CardFooter>
       </Card>
     </div>
   )
 }
-

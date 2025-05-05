@@ -5,7 +5,9 @@ import {
   ThemeProvider as NextThemesProvider,
   type ThemeProviderProps,
 } from 'next-themes'
+import { Provider } from "react-redux"
+import { store } from "@/redux/store/Store"
 
 export function ThemeProvider({ children, ...props }: ThemeProviderProps) {
-  return <NextThemesProvider {...props}>{children}</NextThemesProvider>
+  return <Provider store={store}> <NextThemesProvider {...props}>{children}</NextThemesProvider> </Provider>
 }

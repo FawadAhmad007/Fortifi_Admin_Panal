@@ -3,7 +3,8 @@ import { ThemeProvider } from "@/components/theme-provider"
 import { Toaster } from "@/components/ui/toaster"
 import "@/app/globals.css"
 import { Inter } from "next/font/google"
-
+import { Provider } from "react-redux";
+import { store } from "@/redux/store/Store";
 const inter = Inter({ subsets: ["latin"] })
 
 export const metadata = {
@@ -26,6 +27,7 @@ export default function RootLayout({
         <link rel="icon" href="/favicon.ico" sizes="any" />
       </head>
       <body className={`${inter.className} antialiased`}>
+        
         <ThemeProvider attribute="class" defaultTheme="dark" enableSystem={false} disableTransitionOnChange>
           {children}
           <Toaster />

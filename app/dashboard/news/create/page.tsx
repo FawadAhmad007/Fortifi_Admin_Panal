@@ -18,7 +18,9 @@ import { useToast } from "@/components/ui/use-toast"
 import { ArrowLeft, Upload, Plus } from "lucide-react"
 import Link from "next/link"
 import Image from "next/image"
-
+import { useDispatch, useSelector } from "react-redux";
+import { RootState } from "@/redux/store/Store";
+import { createNews } from "@/shared/services/request"
 export default function CreateNewsPage() {
   const router = useRouter()
   const { toast } = useToast()
@@ -30,6 +32,7 @@ export default function CreateNewsPage() {
   const [images, setImages] = useState<string[]>([])
   const [isSubmitting, setIsSubmitting] = useState(false)
   const [previewImage, setPreviewImage] = useState<string | null>(null)
+  const auth = useSelector((state: RootState) => state.auth);
 
   const handleImageChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0]
@@ -62,34 +65,62 @@ export default function CreateNewsPage() {
     setImages(newImages)
   }
 
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault()
-    setIsSubmitting(true)
 
-    // Validate form
-    if (!title.trim() || !content.trim() || !category) {
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setIsSubmitting(true);
+
+    if (!title.trim() || !content.trim()) {
       toast({
         variant: "destructive",
         title: "Error",
         description: "Please fill in all required fields",
-      })
-      setIsSubmitting(false)
-      return
+      });
+      setIsSubmitting(false);
+      return;
     }
 
-    // Simulate API call
-    setTimeout(() => {
-      setIsSubmitting(false)
+    const fileInput = document.getElementById("main-image") as HTMLInputElement;
+    const file = fileInput?.files?.[0];
 
+    if (!file) {
       toast({
-        variant: "success",
-        title: "News created",
-        description: "The news article has been created successfully",
-      })
+        variant: "destructive",
+        title: "Error",
+        description: "Please upload a main image",
+      });
+      setIsSubmitting(false);
+      return;
+    }
 
-      router.push("/dashboard/news")
-    }, 1000)
-  }
+    const formData = new FormData();
+    formData.append("newsTitle", title);
+    formData.append("description", content);
+    formData.append("newsImage", file);
+
+    try {
+      const res = await createNews(formData, auth?.token);
+      if (res?.is_successfull) {
+        toast({
+          variant: "success",
+          title: "News created",
+          description: "The news article has been created successfully",
+        });
+        router.push("/dashboard/news");
+        
+      } else {
+        throw new Error(res?.message || "Something went wrong");
+      }
+    } catch (error: any) {
+      toast({
+        variant: "destructive",
+        title: "Creation failed",
+        description: error.message || "Failed to create news",
+      });
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
 
   return (
     <DashboardLayout>
@@ -128,23 +159,7 @@ export default function CreateNewsPage() {
               </div>
 
               <div className="grid gap-4 sm:grid-cols-2">
-                <div className="space-y-2">
-                  <Label htmlFor="category" className="text-gray-300">
-                    Category
-                  </Label>
-                  <Select value={category} onValueChange={setCategory}>
-                    <SelectTrigger className="bg-secondary-500 border-white/10">
-                      <SelectValue placeholder="Select category" />
-                    </SelectTrigger>
-                    <SelectContent className="bg-secondary-500 border-white/10">
-                      <SelectItem value="Updates">Updates</SelectItem>
-                      <SelectItem value="Features">Features</SelectItem>
-                      <SelectItem value="Security">Security</SelectItem>
-                      <SelectItem value="Analysis">Analysis</SelectItem>
-                      <SelectItem value="Announcements">Announcements</SelectItem>
-                    </SelectContent>
-                  </Select>
-                </div>
+    
 
                 <div className="flex items-end">
                   <div className="flex items-center space-x-2 h-10">

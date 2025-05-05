@@ -10,6 +10,7 @@ import { CryptoChart } from "@/components/crypto-chart"
 import { kycData, newsData, kycAnalyticsData } from "@/lib/data"
 import { Users, CheckCircle, XCircle, Clock, TrendingUp, ArrowRight, Eye, Calendar } from "lucide-react"
 import Image from "next/image"
+import { useDispatch, useSelector } from "react-redux";
 
 export default function DashboardPage() {
   const [activeTab, setActiveTab] = useState("overview")

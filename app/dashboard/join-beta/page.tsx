@@ -12,7 +12,9 @@ import { Input } from "@/components/ui/input"
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table"
 import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert"
 import { Skeleton } from "@/components/ui/skeleton"
-
+import { useDispatch, useSelector } from "react-redux";
+import { RootState } from "@/redux/store/Store";
+import { getContacts } from "@/shared/services/request"
 export default function JoinBetaPage() {
   const [contacts, setContacts] = useState<any[]>([])
   const [currentPage, setCurrentPage] = useState(1)
@@ -20,8 +22,8 @@ export default function JoinBetaPage() {
   const [totalItems, setTotalItems] = useState(0)
   const [searchTerm, setSearchTerm] = useState("")
   const [isLoading, setIsLoading] = useState(true)
+  const auth = useSelector((state: RootState) => state.auth);
   const [error, setError] = useState<string | null>(null)
-  const itemsPerPage = 10
 
   useEffect(() => {
     loadContacts()
@@ -30,29 +32,22 @@ export default function JoinBetaPage() {
   const loadContacts = async () => {
     setIsLoading(true)
     setError(null)
-
-    try {
-        const response = await axios.get("http://localhost:8000/api/contacts", {
-            params: {
-              page: currentPage,
-              limit: itemsPerPage,
-            },
-            headers: {
-              "Content-Type": "application/json",
-            },
-          })
-          
-      const data = response.data
-      setContacts(data.contacts || [])
-      setTotalPages(data.pagination?.totalPages || 1)
-      setTotalItems(data.pagination?.total || 0)
-    } catch (err) {
-      setError("Failed to load contact data. Please try again later.")
-      setContacts([])
-      console.error(err)
-    } finally {
-      setIsLoading(false)
-    }
+    getContacts(auth?.token,currentPage)
+      .then((response) => {
+        const data = response.data
+        setContacts(data.contacts || [])
+        setTotalPages(data.pagination?.totalPages || 1)
+        setTotalItems(data.pagination?.total || 0)
+      })
+      .catch((err) => {
+        setError("Failed to load contact data. Please try again later.")
+        setContacts([])
+        console.log(err)
+      })
+      .finally(() => {
+        setIsLoading(false)
+      })  
+     
   }
 
   const goToPage = (page: number) => setCurrentPage(page)
