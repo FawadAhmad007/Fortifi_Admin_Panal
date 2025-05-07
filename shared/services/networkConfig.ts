@@ -58,7 +58,7 @@ export const getConfig = ( url: string): AxiosConfig => ({
   url,
   timeout: 10000,
   headers: {
-    // 'x-api-key': process.env.NEXT_PUBLIC_API_SECRET_KEY || '',
+    'x-api-key': process.env.NEXT_PUBLIC_API_SECRET_KEY || '',
     'Content-Type': 'application/json',
 
   },
