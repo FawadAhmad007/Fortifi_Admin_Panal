@@ -1,5 +1,5 @@
-const BASE_URL =  'http://localhost:8000';
-// const BASE_URL =  'https://fortifi.world';
+// const BASE_URL =  'http://localhost:8000';
+const BASE_URL =  'https://fortifi.world';
 
 const COINGECKO_PUBLIC = 'https://api.coingecko.com/api/v3';
 const COINGECKO = 'https://pro-api.coingecko.com/api/v3';
