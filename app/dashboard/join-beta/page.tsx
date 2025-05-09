@@ -15,6 +15,7 @@ import { Skeleton } from "@/components/ui/skeleton"
 import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "@/redux/store/Store";
 import { getContacts } from "@/shared/services/request"
+import { DashboardLayout } from "@/components/dashboard-layout"
 export default function JoinBetaPage() {
   const [contacts, setContacts] = useState<any[]>([])
   const [currentPage, setCurrentPage] = useState(1)
@@ -70,7 +71,7 @@ export default function JoinBetaPage() {
   )
 
   return (
-    <div className="p-6 space-y-4">
+    <DashboardLayout >
       <h1 className="text-2xl font-bold">Join Beta Requests</h1>
 
       {error && (
@@ -185,6 +186,6 @@ export default function JoinBetaPage() {
           </div>
         </div>
       )}
-    </div>
+    </DashboardLayout>
   )
 }

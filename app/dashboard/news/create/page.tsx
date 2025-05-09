@@ -67,6 +67,8 @@ export default function CreateNewsPage() {
 
 
   const handleSubmit = async (e: React.FormEvent) => {
+    // console.log("Submitting:", { title, content });
+
     e.preventDefault();
     setIsSubmitting(true);
 
@@ -135,7 +137,7 @@ export default function CreateNewsPage() {
           <h1 className="text-3xl font-bold tracking-tight">Create News</h1>
         </div>
 
-        <Card className="crypto-card ">
+        <Card className="crypto-card z-10">
           <form onSubmit={handleSubmit}>
             <CardHeader>
               <CardTitle className="text-white">News Article Details</CardTitle>
@@ -144,7 +146,7 @@ export default function CreateNewsPage() {
               </CardDescription>
             </CardHeader>
             <CardContent className="space-y-6">
-              <div className="space-y-2">
+              <div className="space-y-2 relative z-10">
                 <Label htmlFor="title" className="text-gray-300">
                   Title
                 </Label>
@@ -161,7 +163,7 @@ export default function CreateNewsPage() {
               <div className="grid gap-4 sm:grid-cols-2">
     
 
-                <div className="flex items-end">
+                <div className="flex items-end relative z-10">
                   <div className="flex items-center space-x-2 h-10">
                     <Checkbox
                       id="featured"
@@ -176,7 +178,7 @@ export default function CreateNewsPage() {
                 </div>
               </div>
 
-              <div className="space-y-2">
+              <div className="space-y-2 relative z-10">
                 <Label htmlFor="content" className="text-gray-300">
                   Content
                 </Label>
@@ -190,7 +192,7 @@ export default function CreateNewsPage() {
                 />
               </div>
 
-              <div className="space-y-2">
+              <div className="space-y-2 relative z-10">
                 <div className="flex items-center justify-between">
                   <Label className="text-gray-300">Images</Label>
                   <Button
@@ -229,7 +231,7 @@ export default function CreateNewsPage() {
                     </label>
                   </div>
                 ) : (
-                  <div className="space-y-4">
+                  <div className="space-y-4 relative z-10">
                     {previewImage && (
                       <div className="p-4 border border-white/10 rounded-lg bg-secondary-500/50">
                         <h3 className="text-sm font-medium text-white mb-2">Preview Image</h3>
@@ -320,7 +322,7 @@ export default function CreateNewsPage() {
                 )}
               </div>
             </CardContent>
-            <CardFooter className="flex justify-between border-t border-white/10 pt-6">
+            <CardFooter className="flex justify-between border-t border-white/10 pt-6 relative z-10">
               <Button
                 type="button"
                 variant="outline"
@@ -329,7 +331,7 @@ export default function CreateNewsPage() {
               >
                 Cancel
               </Button>
-              <Button type="submit" className="bg-primary hover:bg-primary/90" disabled={isSubmitting}>
+              <Button type="submit" className="bg-primary hover:bg-primary/90 relative z-10" disabled={isSubmitting}>
                 {isSubmitting ? "Creating..." : "Create News"}
               </Button>
             </CardFooter>
