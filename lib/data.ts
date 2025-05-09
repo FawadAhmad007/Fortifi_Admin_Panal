@@ -385,7 +385,7 @@ export const newsData: NewsItem[] = [
     featured: true,
   },
   {
-    id: "NEWS-38",
+    id: "NEWS-338",
     title: "Mobile App Update",
     content:
       "We've released an update to our mobile app with several improvements and bug fixes. The update includes a redesigned dashboard, faster loading times, and improved notification management.",
@@ -397,7 +397,7 @@ export const newsData: NewsItem[] = [
     featured: false,
   },
   {
-    id: "NEWS-42",
+    id: "NEWS-432",
     title: "Platform Update v2.5",
     content:
       "We're excited to announce the release of version 2.5 of our platform. This update includes improved performance, enhanced security features, and a redesigned user interface for a better trading experience.",
@@ -410,7 +410,7 @@ export const newsData: NewsItem[] = [
     featured: true,
   },
   {
-    id: "NEWS-41",
+    id: "NEWS-411",
     title: "New Trading Features",
     content:
       "We've added several new trading features to enhance your experience. These include advanced charting tools, additional order types, and improved position management capabilities.",
@@ -422,7 +422,7 @@ export const newsData: NewsItem[] = [
     featured: true,
   },
   {
-    id: "NEWS-40",
+    id: "NEWS-4240",
     title: "Security Enhancement",
     content:
       "We've implemented additional security measures to protect your account. These include two-factor authentication improvements, enhanced encryption, and advanced fraud detection systems.",
@@ -434,7 +434,7 @@ export const newsData: NewsItem[] = [
     featured: false,
   },
   {
-    id: "NEWS-39",
+    id: "NEWS-349",
     title: "Market Analysis Q1",
     content:
       "Our team has prepared a comprehensive analysis of market trends for Q1 2025. This report covers key movements in major cryptocurrencies, emerging trends, and predictions for the coming quarter.",
@@ -451,7 +451,7 @@ export const newsData: NewsItem[] = [
     featured: true,
   },
   {
-    id: "NEWS-38",
+    id: "NEWS-3458",
     title: "Mobile App Update",
     content:
       "We've released an update to our mobile app with several improvements and bug fixes. The update includes a redesigned dashboard, faster loading times, and improved notification management.",
@@ -463,7 +463,7 @@ export const newsData: NewsItem[] = [
     featured: false,
   },
   {
-    id: "NEWS-42",
+    id: "NEWS-4243",
     title: "Platform Update v2.5",
     content:
       "We're excited to announce the release of version 2.5 of our platform. This update includes improved performance, enhanced security features, and a redesigned user interface for a better trading experience.",
@@ -476,7 +476,7 @@ export const newsData: NewsItem[] = [
     featured: true,
   },
   {
-    id: "NEWS-41",
+    id: "NEWS-4231",
     title: "New Trading Features",
     content:
       "We've added several new trading features to enhance your experience. These include advanced charting tools, additional order types, and improved position management capabilities.",
@@ -488,7 +488,7 @@ export const newsData: NewsItem[] = [
     featured: true,
   },
   {
-    id: "NEWS-40",
+    id: "NEWS-4420",
     title: "Security Enhancement",
     content:
       "We've implemented additional security measures to protect your account. These include two-factor authentication improvements, enhanced encryption, and advanced fraud detection systems.",
@@ -500,7 +500,7 @@ export const newsData: NewsItem[] = [
     featured: false,
   },
   {
-    id: "NEWS-39",
+    id: "NEWS-339",
     title: "Market Analysis Q1",
     content:
       "Our team has prepared a comprehensive analysis of market trends for Q1 2025. This report covers key movements in major cryptocurrencies, emerging trends, and predictions for the coming quarter.",
@@ -517,7 +517,7 @@ export const newsData: NewsItem[] = [
     featured: true,
   },
   {
-    id: "NEWS-38",
+    id: "NEWS-338",
     title: "Mobile App Update",
     content:
       "We've released an update to our mobile app with several improvements and bug fixes. The update includes a redesigned dashboard, faster loading times, and improved notification management.",

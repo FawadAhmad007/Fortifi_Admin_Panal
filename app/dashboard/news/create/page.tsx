@@ -135,7 +135,7 @@ export default function CreateNewsPage() {
           <h1 className="text-3xl font-bold tracking-tight">Create News</h1>
         </div>
 
-        <Card className="crypto-card">
+        <Card className="crypto-card ">
           <form onSubmit={handleSubmit}>
             <CardHeader>
               <CardTitle className="text-white">News Article Details</CardTitle>
